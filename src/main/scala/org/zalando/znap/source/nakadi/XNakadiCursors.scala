@@ -15,8 +15,8 @@ import scala.util.Try
   * HTTP header for Nakadi cursor.
   */
 class XNakadiCursors(partition: String, offset: String) extends CustomHeader {
-  assert(Try(partition.toInt).isSuccess)
-  assert(offset == "BEGIN" || Try(offset.toLong).isSuccess)
+  require(Try(partition.toInt).isSuccess)
+  require(offset == "BEGIN" || (offset != null && offset.length > 0))
 
   override def name(): String = "X-Nakadi-Cursors"
 
