@@ -16,7 +16,7 @@ import scala.util.Try
   */
 class XNakadiCursors(partition: String, offset: String) extends CustomHeader {
   require(Try(partition.toInt).isSuccess)
-  require(offset == "BEGIN" || (offset != null && offset.length > 0))
+  require(offset != null && offset.length > 0)
 
   override def name(): String = "X-Nakadi-Cursors"
 
